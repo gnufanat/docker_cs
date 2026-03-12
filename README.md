@@ -103,7 +103,7 @@ USER_GID=GID_пользователя_hlds
 docker build -t cs:latest .
 ```
 
-**Запускаем контейнер-донор**
+**Создаём и запускаем контейнер-донор**
 ```bash
 docker run -d --name cs cs:latest
 ```
