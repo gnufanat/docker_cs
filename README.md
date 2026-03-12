@@ -61,6 +61,7 @@ git clone https://github.com/gnufanat/docker_cs .
 ## Настройка сервера
 
 **В данном примере, создадим сервер cs 1.6 работающий на порту 27015**
+
 В файле: **.env**
 ```bash
 SERVER_PORT=27015
