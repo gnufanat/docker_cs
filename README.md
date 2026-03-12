@@ -66,7 +66,7 @@ git clone https://github.com/gnufanat/docker_cs .
 ```bash
 SERVER_PORT=27015
 ```
-**можно изменить на:**
+**можно изменить на другой доступный порт:**
 ```bash
 SERVER_PORT=27016
 ```
