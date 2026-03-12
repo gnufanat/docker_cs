@@ -95,7 +95,7 @@ mem_limit: "512m"
 ```
 
 **cpuset** - определяет на каком ядре будет работать сервер (привязка к ядру)  
-**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита сервер будет перезагружен.  
+**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита - сервер будет перезагружен.  
 
 ## Проверьте UID и GID текущего пользователя
 **введите в терминале:**
@@ -154,34 +154,49 @@ docker compose -p hlds down
 docker compose -p hlds restart
 ```
 
+**Пересборка образов с учётом изменений**
+```bash
+docker compose -p hlds build --no-cache
+```
+
 **Зайти во внутрь контейнера, позволяет работать в командной строке как в обычной Linux-системе**
 ```bash
 docker exec -it hlds bash
+```
+```bash
+docker exec -it fastdl bash
 ```
 
 **Просмотр логов контейнера**
 ```bash
 docker logs -f hlds
 ```
+```bash
+docker logs -f fastdl
+```
 
 **Запуск контейнера**
 ```bash
 docker start hlds
+```
+```bash
+docker start fastdl
 ```
 
 **Остановка контейнера**
 ```bash
 docker stop hlds
 ```
+```bash
+docker stop fastdl
+```
 
 **Перезапуск контейнера**
 ```bash
 docker restart hlds
 ```
-
-**Пересборка образов с учётом изменений**
 ```bash
-docker compose -p hlds build --no-cache
+docker restart fastdl
 ```
 
 **Остановка контейнеров и полное их удаление вместе с образом**
