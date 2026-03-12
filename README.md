@@ -27,10 +27,6 @@ apt install mc git unzip -y
 ```bash
 curl -fsSL https://get.docker.com | sh
 ```
-**Автозагрузка docker**
-```bash
-systemctl enable --now docker
-```
 
 **Создаём пользователя hlds (отвечаем на вопросы и задаём пароль пользователю)**
 ```bash
