@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png">
+    <title>{{ site.title }}</title>
+{% seo %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Docker_CS 1.6 сервер </h1>
+      <h2 class="project-tagline">{{ site.github.project_tagline }}</h2>
+        <a href="{{ site.github.repository_url }}" class="btn">Просмотреть на GitHub</a>
+        <a href="{{ site.github.releases_url }}" class="btn">Версии</a>
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+
+      <footer class="site-footer">
+        {% if site.github.is_project_page %}
+          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.</span>
+        {% endif %}
+      </footer>
+    </main>
+  </body>
+</html>
