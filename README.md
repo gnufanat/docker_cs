@@ -53,7 +53,7 @@ su - hlds
 mkdir -p ${HOME}/docker_cs && cd ${HOME}/docker_cs
 ```
 
-**Клонируем репозиторий docker_cs**
+**Клонируем репозиторий docker_cs в текущий каталог**
 ```bash
 git clone https://github.com/gnufanat/docker_cs .
 ```
