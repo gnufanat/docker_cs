@@ -53,9 +53,9 @@ su - hlds
 mkdir -p ${HOME}/docker_cs && cd ${HOME}/docker_cs
 ```
 
-**Загружаем в этот каталог docker_cs.zip и распаковываем**
+**Клонируем репозиторий docker_cs**
 ```bash
-unzip docker_cs.zip && rm docker_cs.zip
+git clone https://github.com/gnufanat/docker_cs .
 ```
 
 ## Настройка сервера
@@ -111,7 +111,7 @@ docker run -d --name cs cs:latest
 
 **Копируем файлы контейнера-донора на хостовую машину в каталог пользователя и останавливаем контейнер-донор**
 ```bash
-rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker stop cs
+mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker stop cs
 ```
 теперь мы имеем файлы сервера которые будут доступны даже при удалении контейнера
 
