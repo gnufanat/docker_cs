@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter-Strike 1.6 Server</title>
+<meta name="description" content="Онлайн сервер Counter-Strike 1.6 с FastDL, античитом и активной администрацией. Играй на сервере 24/7, скачивай карты и модели быстро.">
+<meta name="keywords" content="Counter-Strike 1.6, CS 1.6 сервер, онлайн игра, FastDL, античит, 24/7, игра CS">
+
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0d1117;color:#e6edf3;text-align:center}
+a{color:#22c55e;text-decoration:none;transition:color 0.3s}a:hover{text-decoration:underline}
+header{padding:40px 20px;background:linear-gradient(90deg,#111827,#1f2937);box-shadow:0 2px 10px rgba(0,0,0,0.6)}
+h1{margin:0;font-size:40px;color:#22c55e}
+.ip{font-size:22px;margin-top:15px;background:#111827;padding:10px 20px;display:inline-block;border-radius:6px;border:1px solid #22c55e}
+.btn{display:inline-block;margin-top:20px;padding:12px 25px;font-size:18px;color:#fff;background:#22c55e;text-decoration:none;border-radius:6px}
+.btn:hover{background:#16a34a}
+section{padding:40px 20px}
+.features{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+.card{background:#161b22;padding:20px;width:260px;border-radius:10px;border:1px solid #30363d}
+footer{margin-top:40px;padding:20px;background:#111827;font-size:14px;color:#8b949e}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🔥 Counter-Strike 1.6 сервер</h1>
+
+<div class="ip" id="server-ip">
+IP: загрузка...
+</div>
+<br />
+<a class="btn" id="connect-btn">
+Подключиться к серверу
+</a>
+</header>
+
+<section>
+<h2>О сервере</h2>
+<p>Тебе у нас понравится</p>
+</section>
+
+<section>
+<h2>Особенности</h2>
+
+<div class="features">
+
+<div class="card">
+⚡ FastDL
+<p><a href="/cstrike/">Быстрая загрузка</a></p>
+</div>
+
+<div class="card">
+🛡 Античит
+<p>Защита от читеров</p>
+</div>
+
+<div class="card">
+🎯 24/7
+<p>Сервер работает круглосуточно</p>
+</div>
+
+<div class="card">
+👥 Администрация
+<p>18+</p>
+</div>
+
+</div>
+</section>
+
+<footer id="footer">
+© <span id="year">2026</span> Counter-Strike 1.6
+</footer>
+
+<script type="text/javascript">
+let host = window.location.hostname;
+
+if (!host) {
+    host = "127.0.0.1";
+}
+
+const port = "27015";
+const ip = host + ":" + port;
+
+document.getElementById("server-ip").innerText = "IP: " + ip;
+document.getElementById("connect-btn").href = "steam://connect/" + ip;
+
+document.getElementById("year").innerText = new Date().getFullYear();
+</script>
+</body>
+</html>
