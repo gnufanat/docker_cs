@@ -88,7 +88,7 @@ SYS_TICRATE=500
 PING_BOOST=2
 ```
 
-**В файле compose.yml есть следующие строки:**
+В файле **compose.yml** есть следующие строки:
 ```bash
 cpuset: "0"
 mem_limit: "512m"
