@@ -211,3 +211,18 @@ docker restart fastdl
 ```bash
 docker compose -p hlds down && docker container prune -f && docker image prune -af && docker network prune -f && docker volume prune -f && docker builder prune -f
 ```
+
+**Создать список карт на сервере**
+```bash
+find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
+```
+
+**Добавить администратора по IP-адресу**
+```bash
+ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
+```
+
+**Добавить администратора по SteamID**
+```bash
+steamid="STEAM_0:1:000000000"; grep -qxF "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" ./store/addons/amxmodx/configs/users.ini || echo "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> ./store/addons/amxmodx/configs/users.ini
+```
