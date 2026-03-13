@@ -198,24 +198,6 @@ docker restart hlds
 docker restart fastdl
 ```
 
-**Остановка контейнеров и полное их удаление вместе с образом**
-```bash
-docker compose -p hlds down && docker container prune -f && docker image prune -af && docker network prune -f && docker volume prune -f && docker builder prune -f
-```
-
-**Полностью удалить docker**
-```bash
-sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
-```
-
-**Удаление пользователя hlds (переключаемся на root)**
-```bash
-sudo -i
-```
-```bash
-deluser --remove-home hlds
-```
-
 **Создать список карт на сервере**
 ```bash
 find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
@@ -229,4 +211,26 @@ ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" 
 **Добавить администратора по SteamID**
 ```bash
 steamid="STEAM_0:1:000000000"; grep -qxF "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" ./store/addons/amxmodx/configs/users.ini || echo "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> ./store/addons/amxmodx/configs/users.ini
+```
+
+## Удаление docker_cs
+
+**Остановка контейнеров и полное их удаление вместе с образом**
+```bash
+docker compose -p hlds down && docker container prune -f && docker image prune -af && docker network prune -f && docker volume prune -f && docker builder prune -f
+```
+
+**Полностью удаляем docker**
+```bash
+sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
+```
+
+**Удаление пользователя hlds**  
+переключаемся на **root**
+```bash
+sudo -i
+```
+удаляем пользователя **hlds**
+```bash
+deluser --remove-home hlds
 ```
