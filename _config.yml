@@ -1,3 +1,6 @@
 theme: jekyll-theme-cayman
 title: Docker_CS 1.6 сервер 
 description: Сборка и установка docker-контейнера Counter-Strike 1.6
+highlighter: rouge
+rouge:
+  theme: monokai
