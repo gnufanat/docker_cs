@@ -1,4 +1,4 @@
-name: Update GitHub Pages
+name: Sync README to GitHub Pages
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - README.md
 
 jobs:
-  update-pages:
+  update-gh-pages:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,20 +17,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Copy README to index.md
-        run: |
-          cp README.md index.md
-
-      - name: Switch to gh-pages and update
+      - name: Configure Git
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
+      - name: Save README.md
+        run: cp README.md /tmp/index.md
+
+      - name: Update gh-pages
+        run: |
           git fetch origin gh-pages
           git checkout gh-pages
-
-          cp ../index.md index.md || true
-
+          cp /tmp/index.md index.md
           git add index.md
-          git commit -m "Update docs from README" || echo "No changes"
+          git commit -m "Update index.md from README.md" || echo "No changes"
           git push origin gh-pages
