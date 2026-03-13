@@ -1,6 +1,6 @@
 ## Сборка и установка docker-контейнера Counter-Strike 1.6
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/5RH34ddWmwg" title="Docker_CS 1.6 сервер #1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="800" height="600" src="https://www.youtube.com/embed/5RH34ddWmwg" title="Docker_CS 1.6 сервер #1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 **Устанавливаемые компоненты**
 ```bash
