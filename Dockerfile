@@ -10,7 +10,6 @@ LABEL org.label-schema.build-date=${BUILD_DATE} \
 ARG SERVER_NAME="Counter-Strike 1.6"
 ARG STEAM_LOGIN="anonymous"
 ARG STEAM_PASSWORD=""
-ARG ADMIN_STEAM_ID="STEAM_0:1:000000000"
 ARG USER_UID=1000
 ARG USER_GID=1000
 ARG STEAM_CMD="https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz"
