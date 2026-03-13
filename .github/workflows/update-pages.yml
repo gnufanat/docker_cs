@@ -12,11 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   
-          ref: main
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
@@ -28,15 +27,12 @@ jobs:
 
       - name: Update gh-pages
         run: |
-        
           if git show-ref --verify --quiet refs/heads/gh-pages; then
             git checkout gh-pages
           else
             git checkout --orphan gh-pages
           fi
-
           cp /tmp/index.md index.md
-
           git add index.md
           git commit -m "Update index.md from README.md" || echo "No changes"
-          git push origin gh-pages
+          git push origin gh-pages --force
