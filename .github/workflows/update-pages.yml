@@ -16,23 +16,27 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
 
       - name: Configure Git
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Copy README.md to gh-pages
+      - name: Create or switch to gh-pages
         run: |
-          git fetch origin gh-pages
-          if git show-ref --verify --quiet refs/heads/gh-pages; then
+          if git rev-parse --verify gh-pages; then
             git checkout gh-pages
           else
             git checkout --orphan gh-pages
           fi
-          cp README.md index.md
+
+      - name: Copy README.md to index.md
+        run: cp ../README.md index.md
+
+      - name: Commit and push
+        run: |
           git add index.md
           git commit -m "Update index.md from README.md" || echo "No changes"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git push origin gh-pages --force
+          git push origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
