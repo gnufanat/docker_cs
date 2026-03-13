@@ -212,6 +212,11 @@ docker restart fastdl
 docker compose -p hlds down && docker container prune -f && docker image prune -af && docker network prune -f && docker volume prune -f && docker builder prune -f
 ```
 
+**Полностью удалить docker**
+```bash
+sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
+```
+
 **Создать список карт на сервере**
 ```bash
 find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
