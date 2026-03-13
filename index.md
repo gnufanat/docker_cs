@@ -42,9 +42,9 @@ curl -fsSL https://get.docker.com | sh
 adduser hlds
 ```
 
-**Добавляем пользователя hlds в группу docker**
+**Добавляем пользователя hlds в группу sudo и docker**
 ```bash
-usermod -aG docker hlds
+sudo usermod -aG sudo,docker hlds
 newgrp docker
 ```
 
@@ -215,6 +215,11 @@ docker compose -p hlds down && docker container prune -f && docker image prune -
 **Полностью удалить docker**
 ```bash
 sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
+```
+
+**Удаление пользователя hlds (выполнить с правами root)**
+```bash
+deluser --remove-home hlds
 ```
 
 **Создать список карт на сервере**
