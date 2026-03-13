@@ -94,7 +94,22 @@ mem_limit: "512m"
 ```
 
 **cpuset** - определяет на каком ядре будет работать сервер (привязка к ядру)  
-**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита - сервер будет перезагружен.  
+**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита - сервер будет перезагружен.
+
+**Создать список карт на сервере**
+```bash
+find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
+```
+
+**Добавить администратора по IP-адресу**
+```bash
+ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
+```
+
+**Добавить администратора по SteamID**
+```bash
+steamid="STEAM_0:1:000000000"; grep -qxF "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" ./store/addons/amxmodx/configs/users.ini || echo "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> ./store/addons/amxmodx/configs/users.ini
+```  
 
 ## Проверьте UID и GID текущего пользователя
 **введите в терминале:**
@@ -196,21 +211,6 @@ docker restart hlds
 ```
 ```bash
 docker restart fastdl
-```
-
-**Создать список карт на сервере**
-```bash
-find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
-```
-
-**Добавить администратора по IP-адресу**
-```bash
-ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
-```
-
-**Добавить администратора по SteamID**
-```bash
-steamid="STEAM_0:1:000000000"; grep -qxF "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" ./store/addons/amxmodx/configs/users.ini || echo "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> ./store/addons/amxmodx/configs/users.ini
 ```
 
 ## Удаление docker_cs
