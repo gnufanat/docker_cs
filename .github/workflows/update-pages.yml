@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -22,19 +22,20 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Create or switch to gh-pages
+      - name: Save README.md temporarily
+        run: cp README.md /tmp/index.md
+
+      - name: Switch to gh-pages
         run: |
-          if git rev-parse --verify gh-pages; then
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
             git checkout gh-pages
           else
             git checkout --orphan gh-pages
           fi
 
-      - name: Copy README.md to index.md
-        run: cp ../README.md index.md
-
-      - name: Commit and push
+      - name: Copy index.md and push
         run: |
+          cp /tmp/index.md index.md
           git add index.md
           git commit -m "Update index.md from README.md" || echo "No changes"
           git push origin gh-pages
