@@ -27,7 +27,7 @@
 
 /* Rouge Monokai */
 .highlighter-rouge .highlight {
-  background-color: #272822;  /* тёмный фон */
+  background-color: #272822;  /* фон */
   color: #f8f8f2;             /* основной текст */
   padding: 1em;
   border-radius: 5px;
@@ -43,13 +43,15 @@
   color: inherit;
 }
 
-.highlighter-rouge .highlight .nt {
-  color: #00ffff !important;
+/* Параметры команд, флаги и встроенные объекты */
+.highlighter-rouge .highlight .nt, /* параметры команд: -t, -aG, --option */
+.highlighter-rouge .highlight .nb, /* встроенные объекты */
+.highlighter-rouge .highlight .o   /* операторы */ {
+  color: #00ffff !important; /* ярко-голубой для контраста */
 }
 
-.highlighter-rouge .highlight .nb,
-.highlighter-rouge .highlight .o {
-  color: #00ffff !important;
+.highlighter-rouge .highlight .nv {
+  color: #a0ffff !important; /* светло-голубой, читаемый на темном фоне */
 }
 
 .page-header {
