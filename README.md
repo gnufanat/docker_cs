@@ -18,9 +18,9 @@ nginx_fastdl
 
 ## Базовая настройка системы
 
-**Выполняем команды от пользователя root!!!**
+**Выполняем команды от пользователя root**
 ```bash
-apt install mc git -y
+apt install mc git unzip -y
 ```
 
 **Устанавливаем docker**
