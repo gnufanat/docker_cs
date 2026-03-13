@@ -27,8 +27,8 @@
 
 /* Rouge Monokai */
 .highlighter-rouge .highlight {
-  background-color: #272822;  /* фон */
-  color: #f8f8f2;             /* основной текст */
+  background-color: #272822;
+  color: #f8f8f2;
   padding: 1em;
   border-radius: 5px;
   overflow-x: auto;
@@ -37,22 +37,21 @@
   line-height: 1.4;
 }
 
-/* код внутри pre */
 .highlighter-rouge .highlight code {
   background: none;
   padding: 0;
   color: inherit;
 }
 
+/* синтаксис */
 .highlighter-rouge .k { color: #f92672; } /* ключевые слова */
 .highlighter-rouge .c { color: #75715e; font-style: italic; } /* комментарии */
-.highlighter-rouge .cm { color: #75715e; font-style: italic; } /* многострочные комментарии */
 .highlighter-rouge .s { color: #e6db74; } /* строки */
 .highlighter-rouge .na { color: #a6e22e; } /* имена атрибутов */
-.highlighter-rouge .nb { color: #f8f8f2; } /* встроенные объекты */
-.highlighter-rouge .nf { color: #66d9ef; } /* имена функций */
+.highlighter-rouge .nb { color: #a0ffff; } /* встроенные объекты — ярко-голубой */
+.highlighter-rouge .nf { color: #66d9ef; } /* функции */
 .highlighter-rouge .nn { color: #f8f8f2; } /* имена классов */
-.highlighter-rouge .o { color: #f8f8f2; } /* операторы */
+.highlighter-rouge .o { color: #a0ffff; } /* операторы — ярко-голубой */
 .highlighter-rouge .p { color: #f8f8f2; } /* пунктуация */
 
 .page-header {
