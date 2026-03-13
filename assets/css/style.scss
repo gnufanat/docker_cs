@@ -25,22 +25,19 @@
   top: 0;
 }
 
-code, pre {
-  font-family: 'Fira Code', monospace;
-  background: #272822;
-  color: #f8f8f2;
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-}
-
-pre {
-  padding: 1em;
-  overflow-x: auto;
+/* Rouge Monokai для Cayman */
+.highlighter-rouge .highlight {
   background-color: #272822;
   color: #f8f8f2;
+  padding: 1em;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+  line-height: 1.4;
 }
 
-pre code {
+.highlighter-rouge .highlight code {
   background: none;
   padding: 0;
   color: inherit;
