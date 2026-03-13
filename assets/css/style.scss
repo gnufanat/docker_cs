@@ -13,7 +13,7 @@
 .video {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
   height: 0;
 }
 
@@ -27,8 +27,8 @@
 
 /* Rouge Monokai */
 .highlighter-rouge .highlight {
-  background-color: #272822;  /* тёмный фон */
-  color: #f8f8f2;             /* основной текст */
+  background-color: #272822;
+  color: #f8f8f2;
   padding: 1em;
   border-radius: 5px;
   overflow-x: auto;
@@ -43,22 +43,19 @@
   color: inherit;
 }
 
-/* Параметры команд, флаги и встроенные объекты */
 .highlighter-rouge .highlight .nt,
 .highlighter-rouge .highlight .nb,
 .highlighter-rouge .highlight .o {
-  color: #00ffff !important; /* ярко-голубой для контраста */
+  color: #00ffff !important;
 }
 
-/* Переменные Bash / ENV */
 .highlighter-rouge .highlight .nv {
-  color: #a0ffff !important; /* светло-голубой, читаемый на темном фоне */
+  color: #a0ffff !important;
 }
 
 .highlighter-rouge .highlight .k {
-  color: #a0ffff !important; /* тот же светлый цвет, что и переменные */
+  color: #a0ffff !important;
 }
-
 
 .page-header {
     color: #fff;
