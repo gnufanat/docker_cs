@@ -35,7 +35,7 @@ adduser hlds
 
 **Добавляем пользователя hlds в группу sudo и docker**
 ```bash
-sudo usermod -aG sudo,docker hlds
+usermod -aG sudo,docker hlds
 newgrp docker
 ```
 
