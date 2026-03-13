@@ -72,8 +72,7 @@ RUN curl -sL "${METAMOD_R}" -o /tmp/metamod.zip && \
     sed -i 's~gamedll_linux "dlls/cs.so"~#gamedll_linux "dlls/cs.so"\ngamedll_linux "addons/metamod/metamod_i386.so"~' /home/hlds/store/cstrike/liblist.gam
 
 # AMXModX
-RUN curl -sL "${AMXX_BASE}" | tar -xzf - -C /home/hlds/store/cstrike && \
-    echo "\"${ADMIN_STEAM_ID}\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> /home/hlds/store/cstrike/addons/amxmodx/configs/users.ini
+RUN curl -sL "${AMXX_BASE}" | tar -xzf - -C /home/hlds/store/cstrike
 
 # ReAPI
 RUN curl -L -o /tmp/reapi.zip ${REAPI_URL} && \
