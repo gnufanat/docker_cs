@@ -1,5 +1,7 @@
 ## Сборка и установка docker-контейнера Counter-Strike 1.6
 
+<iframe width="1321" height="743" src="https://www.youtube.com/embed/5RH34ddWmwg" title="Docker_CS 1.6 сервер #1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 **Устанавливаемые компоненты**
 ```bash
 rehlds-3.14.0.857
