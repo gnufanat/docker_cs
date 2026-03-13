@@ -27,8 +27,8 @@
 
 /* Rouge Monokai */
 .highlighter-rouge .highlight {
-  background-color: #272822;
-  color: #f8f8f2;
+  background-color: #272822;  /* фон */
+  color: #f8f8f2;             /* основной текст */
   padding: 1em;
   border-radius: 5px;
   overflow-x: auto;
@@ -43,16 +43,17 @@
   color: inherit;
 }
 
-/* синтаксис */
+/* синтаксис с яркими контрастными цветами */
 .highlighter-rouge .k { color: #f92672; } /* ключевые слова */
 .highlighter-rouge .c { color: #75715e; font-style: italic; } /* комментарии */
 .highlighter-rouge .s { color: #e6db74; } /* строки */
 .highlighter-rouge .na { color: #a6e22e; } /* имена атрибутов */
-.highlighter-rouge .nb { color: #a0ffff; } /* встроенные объекты — ярко-голубой */
+.highlighter-rouge .nb { color: #00ffff; } /* встроенные объекты — ярко-голубой, контраст */
 .highlighter-rouge .nf { color: #66d9ef; } /* функции */
 .highlighter-rouge .nn { color: #f8f8f2; } /* имена классов */
-.highlighter-rouge .o { color: #a0ffff; } /* операторы — ярко-голубой */
+.highlighter-rouge .o { color: #00ffff; } /* операторы — ярко-голубой */
 .highlighter-rouge .p { color: #f8f8f2; } /* пунктуация */
+
 
 .page-header {
     color: #fff;
