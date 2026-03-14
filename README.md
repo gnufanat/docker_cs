@@ -1,4 +1,4 @@
-## 📘 Сборка и установка docker-контейнера Counter-Strike 1.6
+## 🐳 Сборка и установка docker-контейнера Counter-Strike 1.6
 
 ![Linux](https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
