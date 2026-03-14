@@ -1,6 +1,5 @@
 ## 📘 Сборка и установка docker-контейнера Counter-Strike 1.6
 
-<p align="center">
 ![Linux](https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-supported-2496ED?logo=docker)
@@ -11,7 +10,6 @@
 
 ![Last commit](https://img.shields.io/github/last-commit/gnufanat/docker_cs)
 ![Repo size](https://img.shields.io/github/repo-size/gnufanat/docker_cs)
-</p>
 
 **Устанавливаемые компоненты**
 ```bash
