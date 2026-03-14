@@ -3,11 +3,9 @@
 ![Linux](https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-supported-2496ED?logo=docker)
-
 ![License](https://img.shields.io/github/license/gnufanat/docker_cs)
 ![GitHub stars](https://img.shields.io/github/stars/gnufanat/docker_cs?style=social)
 ![Forks](https://img.shields.io/github/forks/gnufanat/docker_cs?style=social)
-
 ![Last commit](https://img.shields.io/github/last-commit/gnufanat/docker_cs)
 ![Repo size](https://img.shields.io/github/repo-size/gnufanat/docker_cs)
 
