@@ -131,13 +131,6 @@ mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. 
 ```
 теперь мы имеем файлы сервера которые будут доступны даже при удалении контейнера
 
-**Запускаем сервис**
-```bash
-docker compose -p hlds up -d
-```
-
-## Команды по настройке сервера
-
 **Создать список карт на сервере**
 ```bash
 find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
@@ -151,6 +144,11 @@ ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" 
 **Добавить администратора по SteamID**
 ```bash
 steamid="STEAM_0:1:000000000"; grep -qxF "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" ./store/addons/amxmodx/configs/users.ini || echo "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> ./store/addons/amxmodx/configs/users.ini
+```
+
+**Запускаем сервис**
+```bash
+docker compose -p hlds up -d
 ```
 
 ## Полезные команды
