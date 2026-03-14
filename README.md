@@ -1,6 +1,12 @@
 ## 📘 Сборка и установка docker-контейнера Counter-Strike 1.6
 
-<img src="https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black" alt="Linux"><img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white" alt="Docker"><img src="https://img.shields.io/github/license/gnufanat/docker_cs" alt="License"><img src="https://img.shields.io/github/stars/gnufanat/docker_cs?style=social" alt="GitHub stars"><img src="https://img.shields.io/github/forks/gnufanat/docker_cs?style=social" alt="Forks"><img src="https://img.shields.io/github/last-commit/gnufanat/docker_cs" alt="Last commit"><img src="https://img.shields.io/github/repo-size/gnufanat/docker_cs" alt="Repo size">
+![Linux](https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+![License](https://img.shields.io/github/license/gnufanat/docker_cs)
+![GitHub stars](https://img.shields.io/github/stars/gnufanat/docker_cs?style=social)
+![Forks](https://img.shields.io/github/forks/gnufanat/docker_cs?style=social)
+![Last commit](https://img.shields.io/github/last-commit/gnufanat/docker_cs)
+![Repo size](https://img.shields.io/github/repo-size/gnufanat/docker_cs)
 
 **Устанавливаемые компоненты**
 ```bash
