@@ -1,5 +1,9 @@
 ## 📘 Сборка и установка docker-контейнера Counter-Strike 1.6
 
+![Linux](https://img.shields.io/badge/Linux-Ubuntu-orange?logo=linux)
+![Docker](https://img.shields.io/badge/Docker-ready-blue?logo=docker)
+![GitHub](https://img.shields.io/badge/GitHub-repository-black?logo=github)
+
 **Устанавливаемые компоненты**
 ```bash
 rehlds-3.14.0.857
