@@ -20,6 +20,7 @@ ARG REAPI_URL="https://github.com/rehlds/ReAPI/releases/download/5.26.0.338/reap
 ARG REUNION_URL="https://github.com/rehlds/ReUnion/releases/download/0.2.0.34/reunion-0.2.0.34.zip"
 ARG REGAMEDLL_URL="https://github.com/rehlds/ReGameDLL_CS/releases/download/5.28.0.756/regamedll-bin-5.28.0.756.zip"
 
+
 # Переменные
 ENV PING_BOOST="3"
 ENV SYS_TICRATE="1200"
