@@ -47,6 +47,8 @@ RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
         +force_install_dir "/home/hlds/store" \
         +app_set_config 90 mod cstrike \
         +app_update 90 -beta steam_legacy validate +quit && \
+    mkdir -p /home/hlds/.steam/steamcmd/linux32 && \
+    cp -f /home/hlds/Steam/linux32/steamclient.so /home/hlds/.steam/steamcmd/linux32/ && \
     cp -f /home/hlds/Steam/linux32/steamclient.so /home/hlds/.steam/sdk32/ && \
     rm -rf /home/hlds/Steam && \
     touch /home/hlds/store/cstrike/listip.cfg /home/hlds/store/cstrike/banned.cfg && \
