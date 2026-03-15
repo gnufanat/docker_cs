@@ -142,7 +142,7 @@ mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. 
 
 **Создать список карт на сервере**
 ```bash
-find ./store/maps -type f -name "*.bsp" -printf "%f\n" | sed 's/\.bsp$//' > ./store/addons/amxmodx/configs/maps.ini
+find ./store/maps -type f -name "*.bsp" -exec bash -c '[ ! -f "$1.bz2" ] && bzip2 -k "$1"; basename "$1" .bsp' _ {} \; > ./store/addons/amxmodx/configs/maps.ini
 ```
 
 **Добавить администратора по IP-адресу**
