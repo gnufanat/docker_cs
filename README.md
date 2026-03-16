@@ -26,7 +26,7 @@ nginx_fastdl
 
 **Выполняем команды от пользователя root**
 ```bash
-apt install mc git unzip -y
+apt install mc git unzip micro -y
 ```
 
 **Устанавливаем docker**
