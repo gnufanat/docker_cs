@@ -223,7 +223,7 @@ docker restart fastdl
 
 ## Удаление docker_cs
 
-**Остановка контейнеров и полное их удаление вместе с образом**
+**Останавливает и удаляет проект, очищает все неиспользуемые ресурсы Docker**
 ```bash
 docker compose -p hlds down && docker system prune -a --volumes -f
 ```
