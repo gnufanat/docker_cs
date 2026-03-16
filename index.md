@@ -244,4 +244,4 @@ exit
 удаляем пользователя **hlds**
 ```bash
 userdel -r hlds
-``
+```
