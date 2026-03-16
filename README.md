@@ -233,7 +233,8 @@ sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin do
 ```
 
 **Удаление пользователя hlds**
-завершаем сессию пользователя **hlds**
+завершаем сессию пользователя **hlds**  
+`возвращаемся к сессии пользователя root`
 ```bash
 exit
 ``` 
