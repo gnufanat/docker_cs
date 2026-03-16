@@ -120,9 +120,9 @@ USER_GID=GID_пользователя_hlds
 
 ## Создаём образ и контейнеры
                  
-**Создаём образ с именем cs для контейнера-донора**
+**Создаём образ с именем cs**
 ```bash
-docker build -t cs:latest .
+docker build --build-arg USER_UID=$(grep USER_UID .env | cut -d= -f2) --build-arg USER_GID=$(grep USER_GID .env | cut -d= -f2) -t cs:latest .
 ```
 
 **Создаём и запускаем контейнер-донор**
@@ -232,11 +232,11 @@ docker compose -p hlds down && docker system prune -a --volumes -f
 sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
 ```
 
-**Удаление пользователя hlds**  
-переключаемся на **root**
+**Удаление пользователя hlds**
+завершаем сессию пользователя **hlds**
 ```bash
-sudo -i
-```
+exit
+``` 
 удаляем пользователя **hlds**
 ```bash
 userdel -r hlds
