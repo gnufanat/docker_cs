@@ -225,7 +225,7 @@ docker restart fastdl
 
 **Остановка контейнеров и полное их удаление вместе с образом**
 ```bash
-docker compose -p hlds down && docker container prune -f && docker image prune -af && docker network prune -f && docker volume prune -f && docker builder prune -f
+docker compose -p hlds down && docker system prune -a --volumes -f
 ```
 
 **Полностью удаляем docker**
