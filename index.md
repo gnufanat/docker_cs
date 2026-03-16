@@ -235,7 +235,7 @@ docker compose -p hlds down && docker system prune -a --volumes -f
 sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
 ```
 
-**Удаление пользователя hlds**
+**Удаление пользователя hlds**  
 завершаем сессию пользователя **hlds** и возвращаемся к **root**
 ```bash
 exit
