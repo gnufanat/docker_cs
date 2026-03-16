@@ -45,7 +45,6 @@ adduser hlds
 **Добавляем пользователя hlds в группу sudo и docker**
 ```bash
 usermod -aG sudo,docker hlds
-newgrp docker
 ```
 
 **Переключаемся на пользователя hlds**   
@@ -243,5 +242,5 @@ sudo -i
 ```
 удаляем пользователя **hlds**
 ```bash
-deluser --remove-home hlds
+userdel -r hlds
 ```
