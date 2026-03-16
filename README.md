@@ -24,99 +24,114 @@ nginx_fastdl
 
 ## Базовая настройка системы
 
-**Выполняем команды от пользователя root**
+**выполняем команды от пользователя root**
 ```bash
 apt install mc git unzip micro -y
 ```
 
-**Устанавливаем docker**
+**устанавливаем docker**
 ```bash
 curl -fsSL https://get.docker.com | sh
 ```
 
-**Создаём пользователя hlds (отвечаем на вопросы и задаём пароль пользователю)**
+**создаём пользователя hlds (отвечаем на вопросы и задаём пароль пользователю)**
 ```bash
 adduser hlds
 ```
 
-**Добавляем пользователя hlds в группу sudo и docker**
+**добавляем пользователя hlds в группу sudo и docker**
 ```bash
 usermod -aG sudo,docker hlds
 ```
 
-**Переключаемся на пользователя hlds**   
+**переключаемся на пользователя hlds**   
 далее выполняем команды от пользователя **hlds**
 ```bash
 su - hlds
 ```
 
-**Создаём рабочий каталог и переходим в него**
+**создаём рабочий каталог и переходим в него**
 ```bash
 mkdir -p ${HOME}/docker_cs && cd ${HOME}/docker_cs
 ```
 
-**Клонируем репозиторий docker_cs в текущий каталог**
+**клонируем репозиторий docker_cs в текущий каталог**
 ```bash
 git clone https://github.com/gnufanat/docker_cs .
 ```
 
 ## Настройка сервера
 
-**В данном примере, создадим сервер cs 1.6 работающий на порту 27015**
+Откройте файл: **.env**
+```bash  
+mcedit .env
+```
 
-В файле: **.env**
+**стандартный порт можно изменить на другой доступный порт**
 ```bash
 SERVER_PORT=27015
 ```
-**можно изменить на другой доступный порт:**
+
+**укажите ip-адрес сервера**
 ```bash
-SERVER_PORT=27016
+SERVER_IP=ip_адрес_сервера
 ```
 
-**ОБЯЗАТЕЛЬНО! Укажите ip-адрес сервера!**
-```bash
-SERVER_IP=ip_адрес_вашего_сервера
-```
-
-Также измените адрес быстрой закачки (fastdl) в файле **server.cfg**  
-Рабочим считается файл **server.cfg** который лежит в корне проекта, там где файл **compose.yml**.  
-**server.cfg** в каталоге **./store** не выполняет никаких функций.
-```bash
-sv_downloadurl "http://ip_адрес_вашего_сервера:8283/cstrike/"
-```
-
-Если нужно запустить сервер с **500FPS** вместо **1200FPS**  
-Достаточно в файле **.env** указать эти значения:
+Если нужно запустить сервер с **500FPS** вместо **1200FPS**
 ```bash
 SYS_TICRATE=500
 PING_BOOST=2
 ```
+**укажите стартовую карту на сервере**
+```bash
+START_MAP=de_dust2
+```
 
-В файле **compose.yml** есть следующие строки:
+Откройте файл: **server.cfg**
+```bash  
+mcedit server.cfg
+```
+
+**измените ip-адрес быстрой закачки (fastdl)**
+```bash
+sv_downloadurl "http://ip_адрес_сервера:8283/cstrike/"
+```
+
+**измените rcon-проль на свой**
+```bash
+rcon_password "надёжный_rcon_пароль"
+```
+
+📟 готовая команда для автоматической вставки ip-адреса сервера в файлах **.env** и **server.cfg**
+```bash
+IP=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null && sed -i "s/^SERVER_IP=.*/SERVER_IP=$IP/" .env || echo "SERVER_IP=$IP" >> .env && grep -q '^sv_downloadurl' server.cfg 2>/dev/null && sed -i "s|^sv_downloadurl.*|sv_downloadurl \"http://$IP:8283/cstrike/\"|" server.cfg || echo "sv_downloadurl \"http://$IP:8283/cstrike/\"" >> server.cfg
+```
+
+📟 готовая команда для автоматической генерации и вставки rcon-пароля в **server.cfg**
+```bash 
+RCON=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 24) && grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg
+```
+
+Откройте файл: **compose.yml**
+```bash  
+mcedit compose.yml
+```
+
+**ядро и оперативная память**
 ```bash
 cpuset: "0"
 mem_limit: "512m"
 ```
-
 **cpuset** - определяет на каком ядре будет работать сервер (привязка к ядру)  
-**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита - сервер будет перезагружен.  
+**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита - сервер будет перезагружен.
 
-## Проверьте UID и GID текущего пользователя
-**введите в терминале:**
+**настройка порта для быстрой закачки (fastdl)**
 ```bash
-id
+ports:
+  - "8283:80"
 ```
-
-**вывод должен быть таким:**
-```bash
-uid=1000(hlds) gid=1000(hlds)...
-```
-
-Если **UID** и **GID** имеют другое значение, то исправьте его в файле **.env**
-```bash
-USER_UID=UID_пользователя_hlds
-USER_GID=GID_пользователя_hlds
-```
+**ports:** - внешний (8283) и внутренний порт контейнера (80)
+ 
 
 ## Создаём образ и контейнеры
                  
@@ -134,7 +149,7 @@ docker run -d --name cs cs:latest
 ```bash
 mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker stop cs
 ```
-теперь мы имеем файлы сервера которые будут доступны даже при удалении контейнера
+❗файлы сервера в каталоге **./store** будут доступны всегда, даже после удаления контейнера❗
 
 **Создать список карт на сервере**
 ```bash
@@ -192,6 +207,7 @@ docker exec -it fastdl bash
 ```bash
 docker logs -f hlds
 ```
+
 ```bash
 docker logs -f fastdl
 ```
@@ -200,6 +216,7 @@ docker logs -f fastdl
 ```bash
 docker start hlds
 ```
+
 ```bash
 docker start fastdl
 ```
@@ -208,6 +225,7 @@ docker start fastdl
 ```bash
 docker stop hlds
 ```
+
 ```bash
 docker stop fastdl
 ```
@@ -216,6 +234,7 @@ docker stop fastdl
 ```bash
 docker restart hlds
 ```
+
 ```bash
 docker restart fastdl
 ```
@@ -229,15 +248,15 @@ docker compose -p hlds down && docker system prune -a --volumes -f
 
 **Полностью удаляем docker**
 ```bash
-sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo apt update
+sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo groupdel docker && sudo apt update
 ```
 
 **Удаление пользователя hlds**  
-завершаем сессию пользователя **hlds** и возвращаемся к **root**
+⏹️ завершаем сессию пользователя **hlds** и возвращаемся к **root**
 ```bash
 exit
 ``` 
-удаляем пользователя **hlds**
+❌ удаляем пользователя **hlds**
 ```bash
 userdel -r hlds
 ```
