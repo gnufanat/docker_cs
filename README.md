@@ -62,7 +62,7 @@ git clone https://github.com/gnufanat/docker_cs .
 
 ## Настройка сервера
 
-Откройте файл: **.env**
+📝 Откройте файл: **.env**
 ```bash  
 mcedit .env
 ```
@@ -87,7 +87,7 @@ PING_BOOST=2
 START_MAP=de_dust2
 ```
 
-Откройте файл: **server.cfg**
+📝 Откройте файл: **server.cfg**
 ```bash  
 mcedit server.cfg
 ```
@@ -112,7 +112,7 @@ IP=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null &
 RCON=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 24) && grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg
 ```
 
-Откройте файл: **compose.yml**
+📝 Откройте файл: **compose.yml**
 ```bash  
 mcedit compose.yml
 ```
