@@ -146,7 +146,7 @@ ports:
                  
 **Создаём образ с именем cs**
 ```bash
-docker build --build-arg USER_UID=$(grep USER_UID .env | cut -d= -f2) --build-arg USER_GID=$(grep USER_GID .env | cut -d= -f2) -t cs:latest .
+docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) -t cs:latest .
 ```
 
 **Создаём и запускаем контейнер-донор**
