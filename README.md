@@ -164,9 +164,8 @@ find ./store/maps -type f -name "*.bsp" -exec bash -c '[ ! -f "$1.bz2" ] && bzip
 ```
 
 **Добавить администратора по IP-адресу**
-`ip="123.45.67.89 - заменить на нужный`
 ```bash
-ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
+ip=$(last -i | awk 'NF && $3 ~ /([0-9]+\.){3}[0-9]+/ {print $3; exit}'); [ "$ip" = "0.0.0.0" ] && ip=$(hostname -I | awk '{print $1}'); grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
 ```
 
 **Добавить администратора по SteamID**
