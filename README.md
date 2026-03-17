@@ -159,7 +159,7 @@ docker run -d --name cs cs:latest
 
 **Копируем файлы контейнера-донора на хостовую машину в каталог пользователя и останавливаем контейнер-донор**
 ```bash
-mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker stop cs
+mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker rm -f cs
 ```
 ❗файлы сервера в каталоге **./store** будут доступны всегда, даже после удаления контейнера❗
 
