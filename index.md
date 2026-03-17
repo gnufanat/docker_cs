@@ -158,11 +158,6 @@ docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) -t cs:l
 ```bash
 id=$(docker create cs:latest) && mkdir -p ./store && rm -rf ./store/* && docker cp $id:/home/hlds/store/cstrike/. ./store && docker rm $id
 ```
-
-**Копируем файлы контейнера-донора на хостовую машину в каталог пользователя и останавливаем контейнер-донор**
-```bash
-mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker rm -f cs
-```
 ❗файлы сервера в каталоге **./store** будут доступны всегда, даже после удаления контейнера❗
 
 **Создать список карт на сервере**
