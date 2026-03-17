@@ -152,14 +152,9 @@ ports:
 docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) -t cs:latest .
 ```
 
-**Создаём и запускаем контейнер-донор**
+**Создаём контейнер-донор, копируем файлы на хост, удаляем контейнер-донор**
 ```bash
-docker run -d --name cs cs:latest
-```
-
-**Копируем файлы контейнера-донора на хостовую машину в каталог пользователя и останавливаем контейнер-донор**
-```bash
-mkdir -p ./store && rm -rf ./store/* && docker cp cs:/home/hlds/store/cstrike/. ./store && docker rm -f cs
+id=$(docker create cs:latest) && mkdir -p ./store && rm -rf ./store/* && docker cp $id:/home/hlds/store/cstrike/. ./store && docker rm $id
 ```
 ❗файлы сервера в каталоге **./store** будут доступны всегда, даже после удаления контейнера❗
 
