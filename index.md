@@ -35,7 +35,7 @@ sudo -i
 
 **устанавливаем программы**
 ```bash
-apt install mc git unzip micro -y
+apt update && apt install mc git unzip micro -y
 ```
 
 **устанавливаем docker**
