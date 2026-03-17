@@ -6,7 +6,7 @@
 ![Last commit](https://img.shields.io/github/last-commit/gnufanat/docker_cs)
 ![Repo size](https://img.shields.io/github/repo-size/gnufanat/docker_cs)
 
-**устанавливаемые компоненты**
+**Устанавливаемые компоненты**
 ```bash
 rehlds-3.14.0.857
 regamedll_cs-5.28.0.756
@@ -16,9 +16,9 @@ reunion-0.2.0.25
 reapi-5.26.0.338
 nginx_fastdl
 ```
-**рекомендуемые требования для VPS**  
-**виртуализация:** KVM  
-**дистрибутив:** Debian/Ubuntu  
+**Рекомендуемые требования для VPS**  
+**Виртуализация:** KVM  
+**Дистрибутив:** Debian/Ubuntu  
 **RAM:** 1ГБ  
 **SSD:** 10ГБ
 
@@ -200,7 +200,7 @@ docker compose -p hlds restart
 docker compose -p hlds build --no-cache
 ```
 
-**интерфейс командной сроки контейнера, позволяет работать в командной строке как в обычной Linux-системе**
+**интерфейс командной сроки контейнера, позволяет работать в командной строке**
 ```bash
 docker exec -it hlds bash
 ```
