@@ -80,8 +80,7 @@ RUN curl -L -o /tmp/reapi.zip ${REAPI_URL} && \
     unzip -q /tmp/reapi.zip -d /tmp/reapi && \
     cp /tmp/reapi/addons/amxmodx/modules/reapi_amxx_i386.so \
        /home/hlds/store/cstrike/addons/amxmodx/modules/ && \
-    rm -rf /tmp/reapi /tmp/reapi.zip && \
-    echo "reapi_amxx_i386" >> /home/hlds/store/cstrike/addons/amxmodx/configs/modules.ini
+    rm -rf /tmp/reapi /tmp/reapi.zip
 
 # ReUnion
 RUN curl -L -o /tmp/reunion.zip ${REUNION_URL} && \
