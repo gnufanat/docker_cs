@@ -88,6 +88,12 @@ SERVER_IP=ip_адрес_сервера
 SYS_TICRATE=500
 PING_BOOST=2
 ```
+
+**укажите количество игроков на сервер**
+```bash
+MAX_PLAYERS=32
+```
+
 **укажите стартовую карту на сервере**
 ```bash
 START_MAP=de_dust2
