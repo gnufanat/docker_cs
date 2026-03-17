@@ -154,9 +154,9 @@ ports:
 docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) -t cs:latest .
 ```
 
-**Создаём и запускаем контейнер-донор**
+**Создаём контейнер-донор, копируем файлы на хост, удаляем контейнер-донор**
 ```bash
-docker run -d --name cs cs:latest
+id=$(docker create cs:latest) && mkdir -p ./store && rm -rf ./store/* && docker cp $id:/home/hlds/store/cstrike/. ./store && docker rm $id
 ```
 
 **Копируем файлы контейнера-донора на хостовую машину в каталог пользователя и останавливаем контейнер-донор**
@@ -171,9 +171,8 @@ find ./store/maps -type f -name "*.bsp" -exec bash -c '[ ! -f "$1.bz2" ] && bzip
 ```
 
 **Добавить администратора по IP-адресу**
-`ip="123.45.67.89 - заменить на нужный`
 ```bash
-ip="123.45.67.89"; grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
+ip=$(last -i | awk 'NF && $3 ~ /([0-9]+\.){3}[0-9]+/ {print $3; exit}'); [ "$ip" = "0.0.0.0" ] && ip=$(hostname -I | awk '{print $1}'); grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
 ```
 
 **Добавить администратора по SteamID**
