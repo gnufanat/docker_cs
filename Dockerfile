@@ -10,8 +10,8 @@ LABEL org.label-schema.build-date=${BUILD_DATE} \
 ARG SERVER_NAME="Counter-Strike 1.6"
 ARG STEAM_LOGIN="anonymous"
 ARG STEAM_PASSWORD=""
-ARG USER_UID=1000
-ARG USER_GID=1000
+ARG USER_UID
+ARG USER_GID
 ARG STEAM_CMD="https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz"
 ARG REHLDS_URL="https://github.com/rehlds/ReHLDS/releases/download/3.14.0.857/rehlds-bin-3.14.0.857.zip"
 ARG METAMOD_R="https://github.com/rehlds/Metamod-R/releases/download/1.3.0.149/metamod-bin-1.3.0.149.zip"
