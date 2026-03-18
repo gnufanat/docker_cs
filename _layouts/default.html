@@ -32,21 +32,6 @@
 
     <main id="content" class="main-content" role="main">
       {{ content }}
-        <div id="demo"></div>
-
-  <!-- скрипты -->
-  <script src="/assets/js/asciinema-player.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      AsciinemaPlayer.create('/assets/play/start.cast', document.getElementById('demo'), {
-        autoPlay: false,
-        loop: false,
-        cols: 120,
-        rows: 30,
-        theme: 'dracula'
-      });
-    });
-  </script>
 
       <footer class="site-footer">
         <!-- {% if site.github.is_project_page %} -->
