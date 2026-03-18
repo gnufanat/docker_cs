@@ -1,20 +1,13 @@
 ## Сборка и установка docker-контейнера Counter-Strike 1.6
 
-<!-- <div class="video"> -->
-  <!-- <iframe src="https://www.youtube.com/embed/5RH34ddWmwg" -->
-    <!-- title="Docker_CS 1.6 сервер #1" -->
-    <!-- frameborder="0" -->
-    <!-- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" -->
-    <!-- allowfullscreen> -->
-  <!-- </iframe> -->
-<!-- </div> -->
-- [Устанавливаемые компоненты](#устанавливаемые-компоненты)
-- [Рекомендуемые требования для VPS](#рекомендуемые-требования-для-vps)
-- [Базовая настройка системы](#базовая-настройка-системы)
-- [Настройка сервера](#настройка-сервера)
-- [Создаём образ и контейнеры](#создаём-образ-и-контейнеры)
-- [Полезные команды](#полезные-команды)
-- [Удаление docker_cs](#удаление-docker_cs)
+<div class="video"> 
+  <iframe src="https://www.youtube.com/embed/5RH34ddWmwg" 
+    title="Docker_CS 1.6 сервер #1" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen> 
+  </iframe> 
+</div> 
 
 **Устанавливаемые компоненты**
 ```bash
