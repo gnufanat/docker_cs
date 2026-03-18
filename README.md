@@ -117,7 +117,7 @@ rcon_password "надёжный_rcon_пароль"
 
 📟 готовая команда для автоматической вставки ip-адреса сервера в файлах **.env** и **server.cfg**
 ```bash
-IP=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null && sed -i "s/^SERVER_IP=.*/SERVER_IP=$IP/" .env || echo "SERVER_IP=$IP" >> .env && grep -q '^sv_downloadurl' server.cfg 2>/dev/null && sed -i "s|^sv_downloadurl.*|sv_downloadurl \"http://$IP:8283/cstrike/\"|" server.cfg || echo "sv_downloadurl \"http://$IP:8283/cstrike/\"" >> server.cfg
+IPH=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null && sed -i "s/^SERVER_IP=.*/SERVER_IP=$IPH/" .env || echo "SERVER_IP=$IPH" >> .env && grep -q '^sv_downloadurl' server.cfg 2>/dev/null && sed -i "s|^sv_downloadurl.*|sv_downloadurl \"http://$IPH:8283/cstrike/\"|" server.cfg || echo "sv_downloadurl \"http://$IPH:8283/cstrike/\"" >> server.cfg
 ```
 
 📟 готовая команда для автоматической генерации и вставки rcon-пароля в **server.cfg**
@@ -166,7 +166,7 @@ find ./store/maps -type f -name "*.bsp" -exec bash -c '[ ! -f "$1.bz2" ] && bzip
 
 **добавить администратора по IP-адресу**
 ```bash
-ip=$(last -i | awk 'NF && $3 ~ /([0-9]+\.){3}[0-9]+/ {print $3; exit}'); [ "$ip" = "0.0.0.0" ] && ip=$(hostname -I | awk '{print $1}'); grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
+ipa=$(last -i | awk 'NF && $3 ~ /([0-9]+\.){3}[0-9]+/ {print $3; exit}'); [ "$ipa" = "0.0.0.0" ] && ipa=$(hostname -I | awk '{print $1}'); grep -qxF "\"${ip}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ipa}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
 ```
 
 **добавить администратора по SteamID**
