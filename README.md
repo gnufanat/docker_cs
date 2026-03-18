@@ -33,7 +33,7 @@ sudo -i
 
 **устанавливаем программы**
 ```bash
-apt update && apt install mc git unzip micro -y
+apt update && apt install mc git unzip openssl micro -y
 ```
 
 **устанавливаем docker**
@@ -122,7 +122,7 @@ IP=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null &
 
 📟 готовая команда для автоматической генерации и вставки rcon-пароля в **server.cfg**
 ```bash 
-RCON=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 24) && grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg
+RCON=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 24) && (grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg)
 ```
 
 📝 откройте файл: **compose.yml**
