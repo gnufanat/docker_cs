@@ -9,6 +9,13 @@
   <!-- </iframe> -->
 <!-- </div> -->
 
+  <div id="demo"></div>
+  <script src="/assets/js/asciinema-player.min.js"></script>
+  <script>
+    AsciinemaPlayer.create('/assets/play/start.cast', document.getElementById('demo'));
+  </script>
+</body>
+
 **Устанавливаемые компоненты**
 ```bash
 rehlds-3.14.0.857
