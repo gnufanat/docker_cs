@@ -9,7 +9,7 @@ LABEL org.label-schema.build-date=${BUILD_DATE} \
 # Аргументы
 ARG SERVER_NAME="Counter-Strike 1.6"
 ARG STEAM_LOGIN="anonymous"
-ARG STEAM_P=""
+ARG STEAM_PWD=""
 ARG USER_UID
 ARG USER_GID
 ARG STEAM_CMD="https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz"
@@ -43,7 +43,7 @@ WORKDIR /home/hlds/store
 # HLDS
 RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
     curl -sqL "${STEAM_CMD}" | tar zxf - -C /home/hlds/Steam && \
-    /home/hlds/Steam/steamcmd.sh +login ${STEAM_LOGIN} ${STEAM_P} \
+    /home/hlds/Steam/steamcmd.sh +login ${STEAM_LOGIN} ${STEAM_PWD} \
         +force_install_dir "/home/hlds/store" \
         +app_set_config 90 mod cstrike \
         +app_update 90 -beta steam_legacy validate +quit && \
