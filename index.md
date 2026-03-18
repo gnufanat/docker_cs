@@ -1,13 +1,23 @@
 ## Сборка и установка docker-контейнера Counter-Strike 1.6
 
-<div class="video"> 
-  <iframe src="https://www.youtube.com/embed/5RH34ddWmwg" 
-    title="Docker_CS 1.6 сервер #1" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    allowfullscreen> 
-  </iframe> 
-</div> 
+<!-- <div class="video"> -->
+  <!-- <iframe src="https://www.youtube.com/embed/5RH34ddWmwg" -->
+    <!-- title="Docker_CS 1.6 сервер #1" -->
+    <!-- frameborder="0" -->
+    <!-- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" -->
+    <!-- allowfullscreen> -->
+  <!-- </iframe> -->
+<!-- </div> -->
+
+<div id="player"></div>
+<script type="text/javascript">
+  AsciinemaPlayer.create('/assets/start.cast', document.getElementById('player'), {
+    autoPlay: true,
+    loop: true
+  });
+</script>
+
+
 
 **Устанавливаемые компоненты**
 ```bash
@@ -35,7 +45,7 @@ sudo -i
 
 **устанавливаем программы**
 ```bash
-apt update && apt install mc git unzip micro -y
+apt update && apt install mc git unzip openssl micro -y
 ```
 
 **устанавливаем docker**
@@ -124,7 +134,7 @@ IP=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null &
 
 📟 готовая команда для автоматической генерации и вставки rcon-пароля в **server.cfg**
 ```bash 
-RCON=$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 24) && grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg
+RCON=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 24) && (grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg)
 ```
 
 📝 откройте файл: **compose.yml**
