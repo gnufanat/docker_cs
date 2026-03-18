@@ -110,4 +110,4 @@ RUN apt-get remove -y curl unzip && \
     rm -rf /var/lib/apt/lists/*
 
 USER hlds
-ENTRYPOINT /home/hlds/store/hlds_run -pingboost ${PING_BOOST} -game cstrike +ip ${SERVER_IP} -port ${SERVER_PORT} +sys_ticrate ${SYS_TICRATE} +sv_lan ${SV_LAN} +log on +mp_logecho 1 +clientport ${CLIENT_PORT} +map ${START_MAP} -maxplayers ${MAX_PLAYERS}
+ENTRYPOINT ["/bin/bash", "-c", "/home/hlds/store/hlds_run -pingboost ${PING_BOOST} -game cstrike +ip ${SERVER_IP} -port ${SERVER_PORT} +sys_ticrate ${SYS_TICRATE} +sv_lan ${SV_LAN} +log on +mp_logecho 1 +clientport ${CLIENT_PORT} +map ${START_MAP} -maxplayers ${MAX_PLAYERS}"]
