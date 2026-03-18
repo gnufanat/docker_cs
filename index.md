@@ -9,22 +9,6 @@
   <!-- </iframe> -->
 <!-- </div> -->
 
-{% raw %}
-<script src="/assets/js/asciinema-player.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  AsciinemaPlayer.create('/assets/play/start.cast', document.getElementById('demo'), {
-    autoPlay: false,
-    loop: false,
-    cols: 120,
-    rows: 30,
-    theme: 'dracula'
-  });
-});
-</script>
-{% endraw %}
-
-
 **Устанавливаемые компоненты**
 ```bash
 rehlds-3.14.0.857
