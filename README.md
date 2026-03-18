@@ -6,12 +6,6 @@
 ![Last commit](https://img.shields.io/github/last-commit/gnufanat/docker_cs)
 ![Repo size](https://img.shields.io/github/repo-size/gnufanat/docker_cs)
 
-- [Базовая настройка системы](#базовая-настройка-системы)
-- [Настройка сервера](#настройка-сервера)
-- [Создаём образ и контейнеры](#создаём-образ-и-контейнеры)
-- [Полезные команды](#полезные-команды)
-- [Удаление docker_cs](#удаление-docker_cs)
-
 
 **Устанавливаемые компоненты**
 ```bash
