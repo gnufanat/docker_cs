@@ -9,6 +9,8 @@
   <!-- </iframe> -->
 <!-- </div> -->
 
+{% include asciinema.html %}
+
 **Устанавливаемые компоненты**
 ```bash
 rehlds-3.14.0.857
