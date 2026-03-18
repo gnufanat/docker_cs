@@ -9,13 +9,16 @@
   <!-- </iframe> -->
 <!-- </div> -->
 
-<div id="player"></div> 
-<script type="text/javascript"> 
-  AsciinemaPlayer.create('/assets/start.cast', document.getElementById('player'), { 
-    autoPlay: true, 
-    loop: true 
-  }); 
-</script> 
+
+<div id="player"></div>
+<script type="text/javascript">
+  AsciinemaPlayer.create('/assets/start.cast', document.getElementById('player'), {
+    autoPlay: true,
+    loop: true,
+    cols: 80, 
+    rows: 24
+  });
+</script>
 
 
 
