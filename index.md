@@ -14,7 +14,6 @@
   <script>
     AsciinemaPlayer.create('/assets/play/start.cast', document.getElementById('demo'));
   </script>
-</body>
 
 **Устанавливаемые компоненты**
 ```bash
