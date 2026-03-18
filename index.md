@@ -11,12 +11,15 @@
 
 
 <div id="player"></div>
-<script type="text/javascript">
-  AsciinemaPlayer.create('/assets/start.cast', document.getElementById('player'), {
-    autoPlay: true,
-    loop: true,
-    cols: 80, 
-    rows: 24
+<script src="https://unpkg.com/asciinema-player/dist/bundle/asciinema-player.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    AsciinemaPlayer.create('/assets/start.cast', document.getElementById('player'), {
+      autoPlay: true,
+      loop: true,
+      cols: 80,
+      rows: 24
+    });
   });
 </script>
 
