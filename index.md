@@ -9,11 +9,21 @@
   <!-- </iframe> -->
 <!-- </div> -->
 
-  <div id="demo"></div>
-  <script src="/assets/js/asciinema-player.min.js"></script>
-  <script>
-    AsciinemaPlayer.create('/assets/play/start.cast', document.getElementById('demo'));
-  </script>
+{% raw %}
+<script src="/assets/js/asciinema-player.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  AsciinemaPlayer.create('/assets/play/start.cast', document.getElementById('demo'), {
+    autoPlay: false,
+    loop: false,
+    cols: 120,
+    rows: 30,
+    theme: 'dracula'
+  });
+});
+</script>
+{% endraw %}
+
 
 **Устанавливаемые компоненты**
 ```bash
