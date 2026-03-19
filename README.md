@@ -249,20 +249,21 @@ docker restart fastdl
 
 ## Удаление docker_cs
 
+**останавливаем и удаляем docker-проект, очищаем все неиспользуемые ресурсы**  
+выполняем команду от пользователя **hlds**
+```bash
+docker compose -p hlds down && docker system prune -a --volumes -f
+```
+
 **выполняем команды от пользователя root**  
 или получаем права суперпользователя
 ```bash
 sudo -i
 ```
 
-**останавливаем и удаляем docker-проект, очищаем все неиспользуемые ресурсы**
-```bash
-docker compose -p hlds down && docker system prune -a --volumes -f
-```
-
 **полностью удаляем docker**
 ```bash
-sudo apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && sudo rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && sudo rm -rf /var/lib/docker /var/lib/containerd && sudo apt autoremove -y && sudo groupdel docker && sudo apt update
+apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && rm -rf /var/lib/docker /var/lib/containerd && apt autoremove -y && groupdel docker && apt update
 ```
 
 

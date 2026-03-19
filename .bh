@@ -1,0 +1,29 @@
+sudo -i #1
+apt update && apt install mc git unzip openssl micro -y #2
+curl -fsSL https://get.docker.com | sh #3
+adduser hlds #4
+usermod -aG sudo,docker hlds #5
+su - hlds #6
+mkdir -p ${HOME}/docker_cs && cd ${HOME}/docker_cs #7
+git clone https://github.com/gnufanat/docker_cs . #8
+micro .env server.cfg #9
+IPH=$(hostname -I | awk '{print $1}') && grep -q '^SERVER_IP=' .env 2>/dev/null && sed -i "s/^SERVER_IP=.*/SERVER_IP=$IPH/" .env || echo "SERVER_IP=$IPH" >> .env && grep -q '^sv_downloadurl' server.cfg 2>/dev/null && sed -i "s|^sv_downloadurl.*|sv_downloadurl \"http://$IPH:8283/cstrike/\"|" server.cfg || echo "sv_downloadurl \"http://$IPH:8283/cstrike/\"" >> server.cfg #10
+RCON=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 24) && (grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg) #11
+docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) -t cs:latest . #12
+id=$(docker create cs:latest) && mkdir -p ./store && rm -rf ./store/* && docker cp $id:/home/hlds/store/cstrike/. ./store && docker rm $id #13
+find ./store/maps -type f -name "*.bsp" -exec bash -c '[ ! -f "$1.bz2" ] && bzip2 -k "$1"; basename "$1" .bsp' _ {} \; > ./store/addons/amxmodx/configs/maps.ini #14
+ipa=$(last -i | awk 'NF && $3 ~ /([0-9]+\.){3}[0-9]+/ {print $3; exit}'); [ "$ipa" = "0.0.0.0" ] && ipa=$(hostname -I | awk '{print $1}'); grep -qxF "\"${ipa}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ipa}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini #15
+docker compose -p hlds up -d #16
+docker logs -f hlds #17
+m .bashrc
+sudo -i
+c
+cd docker_cs
+mc
+sudo cp .bh /etc/skel/
+sudo cp .bh /root/
+ll /root
+sudo ll /root
+sudo -i
+cd docker_cs
+m ~/.bashrc
