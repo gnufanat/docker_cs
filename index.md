@@ -247,7 +247,7 @@ docker restart fastdl
 **останавливаем и удаляем docker-проект, очищаем все неиспользуемые ресурсы**  
 выполняем команду от пользователя **hlds**
 ```bash
-docker compose -p hlds down && docker system prune -a --volumes -f
+cd ~/docker_cs && docker compose -p hlds down && docker system prune -a --volumes -f
 ```
 
 **выполняем команды от пользователя root**  
