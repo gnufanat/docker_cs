@@ -55,6 +55,7 @@ RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
     rm -rf /home/hlds/Steam && \
     mkdir -p /home/hlds/store/cstrike && \
     touch /home/hlds/store/cstrike/listip.cfg /home/hlds/store/cstrike/banned.cfg && \
+    chown -R hlds:${USER_GID} /home/hlds && \
     chmod 500 /home/hlds/store/hlds_run && \
     chmod 600 /home/hlds/store/cstrike/listip.cfg /home/hlds/store/cstrike/banned.cfg
 
