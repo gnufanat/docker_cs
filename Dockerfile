@@ -43,14 +43,17 @@ WORKDIR /home/hlds/store
 # HLDS
 RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
     curl -sqL "${STEAM_CMD}" | tar zxf - -C /home/hlds/Steam && \
-    /home/hlds/Steam/steamcmd.sh +login ${STEAM_LOGIN} ${STEAM_PWD} \
+    /home/hlds/Steam/steamcmd.sh \
         +force_install_dir "/home/hlds/store" \
+        +login ${STEAM_LOGIN} ${STEAM_PWD} \
         +app_set_config 90 mod cstrike \
-        +app_update 90 -beta steam_legacy validate +quit && \
+        +app_update 90 -beta steam_legacy validate \
+        +quit && \
     mkdir -p /home/hlds/.steam/steamcmd/linux32 && \
     cp -f /home/hlds/Steam/linux32/steamclient.so /home/hlds/.steam/steamcmd/linux32/ && \
     cp -f /home/hlds/Steam/linux32/steamclient.so /home/hlds/.steam/sdk32/ && \
     rm -rf /home/hlds/Steam && \
+    mkdir -p /home/hlds/store/cstrike && \
     touch /home/hlds/store/cstrike/listip.cfg /home/hlds/store/cstrike/banned.cfg && \
     chmod 500 /home/hlds/store/hlds_run && \
     chmod 600 /home/hlds/store/cstrike/listip.cfg /home/hlds/store/cstrike/banned.cfg
