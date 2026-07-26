@@ -19,7 +19,7 @@ services:
     volumes:
       - ./store:/home/hlds/store/cstrike
       - ./server.cfg:/home/hlds/store/cstrike/server.cfg:ro
-      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
     cpuset: "0"
     mem_limit: "512m"
 
