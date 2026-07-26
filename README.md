@@ -102,7 +102,7 @@ START_MAP=de_dust2
 
 📝 Откройте файл: **server.cfg**
 ```bash  
-mcedit server.cfg
+nano server.cfg
 ```
 
 **измените ip-адрес быстрой закачки (fastdl)**
