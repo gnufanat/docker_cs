@@ -31,6 +31,7 @@ RUN groupadd -g ${USER_GID} hlds && \
     dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get -qqy install \
+        apt-utils \
         libc6:i386 lib32gcc-s1 lib32stdc++6 lib32z1 \
         lib32tinfo6 lib32ncurses6 \
         libsdl2-2.0-0:i386 libcurl4:i386 libssl3:i386 \
