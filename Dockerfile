@@ -43,13 +43,14 @@ WORKDIR /home/hlds/store
 
 # HLDS
 RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
+    chown -R hlds:${USER_GID} /home/hlds && \
     curl -sqL "${STEAM_CMD}" | tar zxf - -C /home/hlds/Steam && \
-    /home/hlds/Steam/steamcmd.sh \
-        +force_install_dir "/home/hlds/store" \
+    su - hlds -c "/home/hlds/Steam/steamcmd.sh \
+        +force_install_dir /home/hlds/store \
         +login ${STEAM_LOGIN} ${STEAM_PWD} \
         +app_set_config 90 mod cstrike \
         +app_update 90 -beta steam_legacy validate \
-        +quit && \
+        +quit" && \
     mkdir -p /home/hlds/.steam/steamcmd/linux32 && \
     cp -f /home/hlds/Steam/linux32/steamclient.so /home/hlds/.steam/steamcmd/linux32/ && \
     cp -f /home/hlds/Steam/linux32/steamclient.so /home/hlds/.steam/sdk32/ && \
