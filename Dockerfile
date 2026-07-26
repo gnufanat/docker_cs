@@ -37,7 +37,7 @@ RUN groupadd -g ${USER_GID} hlds && \
         curl unzip mc && \
     rm -rf /var/lib/apt/lists/*
 
-USER hlds
+USER root
 WORKDIR /home/hlds/store
 
 # HLDS
