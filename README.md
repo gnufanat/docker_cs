@@ -71,7 +71,7 @@ git clone https://github.com/gnufanat/docker_cs .
 
 📝 откройте файл: **.env**
 ```bash  
-mcedit .env
+nano .env
 ```
 
 **стандартный порт можно изменить на другой доступный порт**
@@ -127,7 +127,7 @@ RCON=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 24) && (grep -q '^
 
 📝 откройте файл: **compose.yml**
 ```bash  
-mcedit compose.yml
+nano compose.yml
 ```
 
 **ядро и оперативная память**
