@@ -27,7 +27,6 @@ ENV MAX_PLAYERS="32"
 
 # Dependencies
 RUN groupadd -g ${USER_GID} hlds && \
-
     useradd -u ${USER_UID} -g ${USER_GID} -ms /bin/bash hlds && \
     dpkg --add-architecture i386 && \
     apt-get update && \
