@@ -1,12 +1,12 @@
 FROM debian:bookworm-slim
 
-# Мета
+# Metadata
 ARG BUILD_DATE
 ARG VCS_REF
 LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.vcs-ref=${VCS_REF}
 
-# Аргументы
+# Arguments
 ARG SERVER_NAME="Counter-Strike 1.6"
 ARG STEAM_LOGIN="anonymous"
 ARG STEAM_PWD=""
@@ -20,13 +20,14 @@ ARG REAPI_URL="https://github.com/rehlds/ReAPI/releases/download/5.26.0.338/reap
 ARG REUNION_URL="https://github.com/rehlds/ReUnion/releases/download/0.2.0.34/reunion-0.2.0.34.zip"
 ARG REGAMEDLL_URL="https://github.com/rehlds/ReGameDLL_CS/releases/download/5.28.0.756/regamedll-bin-5.28.0.756.zip"
 
-# Переменные
+# Environment variables
 ENV PING_BOOST="3"
 ENV SYS_TICRATE="1200"
 ENV MAX_PLAYERS="32"
 
-# Зависимости
+# Dependencies
 RUN groupadd -g ${USER_GID} hlds && \
+
     useradd -u ${USER_UID} -g ${USER_GID} -ms /bin/bash hlds && \
     dpkg --add-architecture i386 && \
     apt-get update && \
@@ -109,7 +110,7 @@ RUN printf "linux addons/reunion/reunion_mm_i386.so\nlinux addons/amxmodx/dlls/a
 > /home/hlds/store/cstrike/addons/metamod/plugins.ini
 
 USER root
-# Очистка от мусора
+# Cleanup
 RUN apt-get remove -y curl unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
