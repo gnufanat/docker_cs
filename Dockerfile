@@ -42,7 +42,7 @@ RUN groupadd -g ${USER_GID} hlds && \
 USER root
 WORKDIR /home/hlds/store
 
-# HLDS
+# HLDS installation
 RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
     chown -R hlds:${USER_GID} /home/hlds && \
     curl -sqL "${STEAM_CMD}" | tar zxf - -C /home/hlds/Steam && \
