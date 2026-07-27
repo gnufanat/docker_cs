@@ -1,4 +1,4 @@
-## 🐳 Сборка и установка docker-контейнера Counter-Strike 1.6
+## 🐳 Building and Installing the Counter-Strike 1.6 Docker Container
 
 ![Linux](https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
@@ -7,7 +7,7 @@
 ![Repo size](https://img.shields.io/github/repo-size/gnufanat/docker_cs)
 
 
-**Устанавливаемые компоненты**
+**Installed components**
 ```bash
 rehlds-3.14.0.857
 regamedll_cs-5.28.0.756
@@ -17,192 +17,192 @@ reunion-0.2.0.25
 reapi-5.26.0.338
 nginx_fastdl
 ```
-**Рекомендуемые требования для VPS**  
-**Виртуализация:** KVM  
-**Дистрибутив:** Debian/Ubuntu  
-**RAM:** 1ГБ  
-**SSD:** 10ГБ  
-**Открытые порты:** 27015/udp, 8283/tcp
+**Recommended VPS requirements**  
+**Virtualization:** KVM  
+**Distribution:** Debian/Ubuntu  
+**RAM:** 1 GB  
+**SSD:** 10 GB  
+**Open ports:** 27015/udp, 8283/tcp
 
-## Базовая настройка системы
-**выполняем команды от пользователя root**  
-или получаем права суперпользователя
+## Basic system setup
+**Run commands as root**  
+or obtain superuser privileges
 ```bash
 sudo -i
 ```
 
-**устанавливаем программы**
+**Install required packages**
 ```bash
 apt update && apt install mc git unzip openssl micro -y
 ```
 
-**устанавливаем docker**
+**Install Docker**
 ```bash
 curl -fsSL https://get.docker.com | sh
 ```
 
-**создаём пользователя hlds (отвечаем на вопросы и задаём пароль пользователю)**
+**Create the hlds user (answer prompts and set a password)**
 ```bash
 adduser hlds
 ```
 
-**добавляем пользователя hlds в группу sudo и docker**
+**Add hlds to sudo and docker groups**
 ```bash
 usermod -aG sudo,docker hlds
 ```
 
-**переключаемся на пользователя hlds**   
-далее выполняем команды от пользователя **hlds**
+**Switch to the hlds user**   
+From this point, run commands as **hlds**
 ```bash
 su - hlds
 ```
 
-**создаём рабочий каталог и переходим в него**
+**Create the working directory and navigate into it**
 ```bash
 mkdir -p ${HOME}/docker_cs && cd ${HOME}/docker_cs
 ```
 
-**клонируем репозиторий docker_cs в текущий каталог**
+**Clone the docker_cs repository into the current directory**
 ```bash
 git clone https://github.com/gnufanat/docker_cs .
 ```
 
-## Настройка сервера
+## Server configuration
 
-📝 откройте файл: **.env**
-```bash  
+📝 Open the file: **.env**
+```bash
 nano .env
 ```
 
-**стандартный порт можно изменить на другой доступный порт**
+**The default port can be changed to another available port**
 ```bash
 SERVER_PORT=27015
 ```
 
-**укажите ip-адрес сервера**
+**Set the server IP address**
 ```bash
-SERVER_IP=ip_адрес_сервера
+SERVER_IP=server_ip_address
 ```
 
-если нужно запустить сервер с **500FPS** вместо **1200FPS**
+If you want to run the server at **500FPS** instead of **1200FPS**
 ```bash
 SYS_TICRATE=500
 PING_BOOST=2
 ```
 
-**укажите количество игроков на сервере**
+**Set the maximum number of players**
 ```bash
 MAX_PLAYERS=32
 ```
 
-**укажите стартовую карту на сервере**
+**Set the starting map**
 ```bash
 START_MAP=de_dust2
 ```
 
-📝 Откройте файл: **server.cfg**
-```bash  
+📝 Open the file: **server.cfg**
+```bash
 nano server.cfg
 ```
 
-**измените ip-адрес быстрой закачки (fastdl)**
+**Change the fastdl URL**
 ```bash
-sv_downloadurl "http://ip_адрес_сервера:8283/cstrike/"
+sv_downloadurl "http://server_ip_address:8283/cstrike/"
 ```
 
-**измените rcon-проль на свой**
+**Change the rcon password to your own**
 ```bash
-rcon_password "надёжный_rcon_пароль"
+rcon_password "strong_rcon_password"
 ```
 
-📟 готовая команда для автоматической вставки ip-адреса сервера в файлах **.env** и **server.cfg**
+📟 Ready-made command to automatically insert the server IP address into **.env** and **server.cfg**
 ```bash
 IPH=$(ip -4 route get 1 | awk '{print $7; exit}') && grep -q '^SERVER_IP=' .env 2>/dev/null && sed -i "s/^SERVER_IP=.*/SERVER_IP=$IPH/" .env || echo "SERVER_IP=$IPH" >> .env && grep -q '^sv_downloadurl' server.cfg 2>/dev/null && sed -i "s|^sv_downloadurl.*|sv_downloadurl \"http://$IPH:8283/cstrike/\"|" server.cfg || echo "sv_downloadurl \"http://$IPH:8283/cstrike/\"" >> server.cfg
 ```
 
-📟 готовая команда для автоматической генерации и вставки rcon-пароля в **server.cfg**
-```bash 
+📟 Ready-made command to generate and insert an rcon password into **server.cfg**
+```bash
 RCON=$(openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 24) && (grep -q '^rcon_password' server.cfg 2>/dev/null && sed -i "s|^rcon_password.*|rcon_password \"$RCON\"|" server.cfg || echo "rcon_password \"$RCON\"" >> server.cfg)
 ```
 
-📝 откройте файл: **compose.yml**
-```bash  
+📝 Open the file: **compose.yml**
+```bash
 nano compose.yml
 ```
 
-**ядро и оперативная память**
+**CPU core and memory limits**
 ```bash
 cpuset: "0"
 mem_limit: "512m"
 ```
-**cpuset** - определяет на каком ядре будет работать сервер (привязка к ядру)  
-**mem_limit** - определяет количество оперативной памяти которое доступно контейнеру, при превышении лимита - сервер будет перезагружен.
+**cpuset** - defines which CPU core the server will use  
+**mem_limit** - defines how much RAM is available to the container; if exceeded, the server will restart.
 
-**настройка порта для быстрой закачки (fastdl)**
+**FastDL port configuration**
 ```bash
 ports:
   - "8283:80"
 ```
-**ports:** - внешний (8283) и внутренний порт контейнера (80)
- 
+**ports:** - external port (8283) and internal container port (80)
 
-## Создаём образ и контейнеры
-                 
-**создаём образ с именем cs**
+## Build image and containers
+
+**Create the image named cs**
 ```bash
 docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) -t cs:latest .
 ```
 
-**создаём контейнер-донор, копируем файлы на хост, удаляем контейнер-донор**
+**Create a donor container, copy files to the host, remove the donor container**
 ```bash
 id=$(docker create cs:latest) && mkdir -p ./store && rm -rf ./store/* && docker cp $id:/home/hlds/store/cstrike/. ./store && docker rm $id
 ```
-❗файлы сервера в каталоге **./store** будут доступны всегда, даже после удаления контейнера❗
+❗The server files in **./store** will remain accessible even after the container is removed❗
 
-**создать список карт на сервере**
+**Create the server map list**
 ```bash
 find ./store/maps -type f -name "*.bsp" -exec bash -c '[ ! -f "$1.bz2" ] && bzip2 -k "$1"; basename "$1" .bsp' _ {} \; > ./store/addons/amxmodx/configs/maps.ini
 ```
 
-**добавить администратора по IP-адресу**
+**Add an admin by IP address**
 ```bash
 ipa=$(ip route get 1.1.1.1 | awk '{print $7; exit}'); grep -qxF "\"${ipa}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" ./store/addons/amxmodx/configs/users.ini || echo "\"${ipa}\" \"\" \"abcdefghijklmnopqrstuv\" \"de\"" >> ./store/addons/amxmodx/configs/users.ini
 ```
 
-**добавить администратора по SteamID**
-`steamid="STEAM_0:1:000000000" - заменить на нужный`
+**Add an admin by SteamID**
+`steamid="STEAM_0:1:000000000" - replace with the correct value`
 ```bash
 steamid="STEAM_0:1:000000000"; grep -qxF "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" ./store/addons/amxmodx/configs/users.ini || echo "\"$steamid\" \"\" \"abcdefghijklmnopqrstu\" \"ce\"" >> ./store/addons/amxmodx/configs/users.ini
 ```
 
-**запускаем проект**
+**Start the project**
 ```bash
 docker compose -p hlds up -d
 ```
 
-## Полезные команды
+## Useful commands
 
-**запуск проекта** 
+**Start the project**
 ```bash
 docker compose -p hlds up -d
 ```
 
-**остановка проекта** 
+**Stop the project**
 ```bash
 docker compose -p hlds down
 ```
 
-**перезапуск проекта** 
+**Restart the project**
 ```bash
 docker compose -p hlds restart
 ```
 
-**пересборка проекта с учётом изменений**
+**Rebuild the project to apply changes**
+
 ```bash
 docker compose -p hlds build --no-cache
 ```
 
-**интерфейс командной сроки контейнера, позволяет работать в командной строке**
+**Container shell interface for working inside the container**
 ```bash
 docker exec -it hlds bash
 ```
@@ -211,7 +211,7 @@ docker exec -it hlds bash
 docker exec -it fastdl bash
 ```
 
-**просмотр логов контейнера**
+**View container logs**
 ```bash
 docker logs -f hlds
 ```
@@ -220,7 +220,7 @@ docker logs -f hlds
 docker logs -f fastdl
 ```
 
-**запуск контейнера**
+**Start the container**
 ```bash
 docker start hlds
 ```
@@ -229,7 +229,7 @@ docker start hlds
 docker start fastdl
 ```
 
-**oстановка контейнера**
+**Stop the container**
 ```bash
 docker stop hlds
 ```
@@ -238,7 +238,7 @@ docker stop hlds
 docker stop fastdl
 ```
 
-**перезапуск контейнера**
+**Restart the container**
 ```bash
 docker restart hlds
 ```
@@ -247,27 +247,27 @@ docker restart hlds
 docker restart fastdl
 ```
 
-## Удаление docker_cs
+## Removing docker_cs
 
-**останавливаем и удаляем docker-проект, очищаем все неиспользуемые ресурсы**  
-выполняем команду от пользователя **hlds**
+**Stop and remove the Docker project, clean up all unused resources**  
+Run this command as the **hlds** user
 ```bash
 cd ~/docker_cs && docker compose -p hlds down && docker system prune -a --volumes -f
 ```
 
-**выполняем команды от пользователя root**  
-или получаем права суперпользователя
+**Run commands as root**  
+or obtain superuser privileges
 ```bash
 sudo -i
 ```
 
-**полностью удаляем docker**
+**Completely remove Docker**
 ```bash
 apt purge -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin docker-ce-rootless-extras && rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && rm -rf /var/lib/docker /var/lib/containerd && apt autoremove -y && groupdel docker && apt update
 ```
 
 
-**удаляем пользователя hlds**
+**Remove the hlds user**
 ```bash
 userdel -r hlds
 ```
