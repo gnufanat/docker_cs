@@ -1,4 +1,4 @@
-## Сборка и установка docker-контейнера Counter-Strike 1.6
+## Building and Installing the Counter-Strike 1.6 Docker Container
 
 {% include asciinema.html %}
 
