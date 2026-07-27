@@ -2,7 +2,7 @@
 
 <html lang="en">
 	<head>
-		<title>Каталог</title>
+		<title>Directory</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -38,12 +38,12 @@
 			}
 			$("h1").append('<h4><a href="' + dirStructure + '">&#8672;</a>  ' + dirTrun + '</h4>');
 
-			$("h1").prepend('<form id="custom-search-form" class="form-inline pull-right"><div class="btn-group"><input id="searchBox" placeholder="Поиск" type="search" class="form-control"> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span></div></form>');
+			$("h1").prepend('<form id="custom-search-form" class="form-inline pull-right"><div class="btn-group"><input id="searchBox" placeholder="Search" type="search" class="form-control"> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span></div></form>');
 
 			$("a").eq(1).html('../');
 
 			// Add titles.
-			$("pre").prepend('<div class="header">Имя                                                   Время                 Размер</div>');
+			$("pre").prepend('<div class="header">Name                                                   Time                 Size</div>');
 			
 			var list = new Array();
 			var formats = ["bin", "jpg", "gif", "png", "html", "css", "zip", "iso", "tiff", "ico", "psd", "pdf", "exe", "rar", "deb", "swf", "7z", "doc", "docx", "xls", "xlsx", "pptx", "ppt", "txt", "php", "js", "c", "c++", "torrent", "sql", "wmv", "avi", "mp4", "mp3", "wma", "ogg", "msg", "wav", "py", "java", "gzip", "jpeg", "mdl", "bsp", "raw"];

@@ -19,7 +19,7 @@ nginx_fastdl
 
 **Recommended VPS requirements**  
 **Virtualization:** KVM  
-**Distribution:** Debian/Ubuntu  
+**Distribution:** Debian/Ubuntu 
 **RAM:** 1 GB  
 **SSD:** 10 GB  
 **Open ports:** 27015/udp, 8283/tcp
