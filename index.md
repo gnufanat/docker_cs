@@ -1,7 +1,5 @@
 ## Building and Installing the Counter-Strike 1.6 Docker Container
 
-{% include asciinema.html %}
-
 ![Linux](https://img.shields.io/badge/Linux-supported-FCC624?logo=linux&logoColor=black)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 ![License](https://img.shields.io/github/license/gnufanat/docker_cs)
