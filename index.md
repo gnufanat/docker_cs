@@ -36,7 +36,7 @@ Before setting up the server, install the packages used during deployment and co
 ### Debian / Ubuntu
 
 ```bash
-apt update && apt install mc git unzip openssl micro -y
+sudo apt update && apt install mc git unzip openssl micro -y
 ```
 
 ### Arch Linux
