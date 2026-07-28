@@ -42,10 +42,8 @@ apt update && apt install mc git unzip openssl micro -y
 ### Arch Linux
 
 ```bash
-sudo pacman -Syu --noconfirm mc git unzip openssl micro
+sudo pacman -S --needed --noconfirm mc git unzip openssl micro
 ```
-
-> 💡 On Arch Linux, `openssl` is usually already installed as a system dependency, but the command above ensures it's present regardless.
 
 ---
 
