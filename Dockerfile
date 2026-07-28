@@ -43,10 +43,10 @@ WORKDIR /home/hlds/store
 
 # HLDS installation
 RUN mkdir -p /home/hlds/store /home/hlds/Steam /home/hlds/.steam/sdk32 && \
-    curl -sqL "${STEAM_CMD}" | tar zxf - -C /home/hlds/Steam && \
-    chmod +x /home/hlds/Steam/steamcmd.sh && \
+    curl -sqL "${STEAM_CMD}" | tar zxvf - -C /home/hlds/Steam && \
+    chmod 755 /home/hlds/Steam/steamcmd.sh && \
     chown -R hlds:${USER_GID} /home/hlds && \
-    su - hlds -c "/home/hlds/Steam/steamcmd.sh \
+    su - hlds -s /bin/bash -c "/bin/bash /home/hlds/Steam/steamcmd.sh \
         +force_install_dir /home/hlds/store \
         +login ${STEAM_LOGIN} ${STEAM_PWD} \
         +app_set_config 90 mod cstrike \
