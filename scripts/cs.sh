@@ -175,7 +175,7 @@ fi
 # 8. Prepare working directory
 # ---------------------------------------------------------------------------
 step "Preparing working directory"
-TARGET_DIR="${HOME}/docker_cs"
+TARGET_DIR="${PWD}/docker_cs"
 
 if [ -d "$TARGET_DIR" ]; then
     if [ "$(ls -A "$TARGET_DIR" 2>/dev/null)" ]; then
