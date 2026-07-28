@@ -25,7 +25,7 @@ nginx_fastdl
 | Virtualization | KVM |
 | RAM | 1 GB |
 | SSD | 10 GB |
-| Open ports | udp/tcp |
+| Open ports | UDP/TCP |
 
 ---
 
