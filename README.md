@@ -31,6 +31,7 @@ or obtain superuser privileges
 sudo -i
 ```
 
+
 **Install required packages**
 ```bash
 apt update && apt install mc git unzip openssl micro -y
