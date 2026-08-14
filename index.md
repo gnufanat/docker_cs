@@ -52,7 +52,7 @@ sudo pacman -S --needed --noconfirm mc git unzip openssl micro
 The server is installed with a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gnufanat/docker_cs/main/scripts/cs.sh | bash
+curl -fsSL https://raw.githubusercontent.com/gnufanat/docker_cs/main/scripts/docker_hlds | bash
 ```
 
 ---
